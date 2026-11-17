@@ -12,4 +12,11 @@ services:
       # Demo knob: simulate slow inference (ms). Submit/query/cancel stay
       # responsive regardless. Set e.g. "2000" to see the effect.
       INFERENCE_DELAY_MS: "0"
+      # Demo knob: one-shot fault injection. The next N inference calls (a
+      # batch or a recovery probe) raise. "true"/"1" = one failure; "2" lets
+      # the first recovery probe fail too, so the retry can be demonstrated.
+      INJECT_FAILURE_ONCE: "false"
+      # Demo knob: artificial delay inside the recovery probe (ms). Queries
+      # and cancels stay responsive while the probe runs.
+      PROBE_DELAY_MS: "0"
     restart: unless-stopped
